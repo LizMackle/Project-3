@@ -1,28 +1,48 @@
-# Pass JWT to Resolver with Context (Server-side)
+# Project 3
+<a href="">![Deployed App](https://img.shields.io/badge/-Deployed-success?style=for-the-badge)</a> ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge&logo) ![Top language](https://img.shields.io/github/languages/top/lizmackle/Project3?color=yellow&style=for-the-badge&logo) ![Repo Size](https://img.shields.io/github/repo-size/lizmackle/Project3?color=orange&style=for-the-badge)
 
-In this demo, you will verify if a token is valid and carry
+## Description
+xxx
 
-## Instructions
+## Table of Contents
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contribution](#contribution)
+  - [Tests](#tests)
+  - [License](#license)
+  - [Questions](#questions)
+  - [Credits](#credits)
 
-* Run `npm install` and `npm run seed` to set up the database.
+## Installation
+Clone the Github repository:<br>
+`xxx`
 
-* Open [server.js](server/server.js) and explain the following:
+Install all dependencies required for application:<br>
+`npm install` from the root directory.
+  
+## Usage
+To use this app, use the following command:
 
-  * We can add another option to our Apollo Server configuration called `context`, which is a lot like middleware in Express.
+Build the app<br>
+`xx`
 
-  * This will allow us to intercept any request to the server and check if there's a valid JWT before the request gets to the resolver.
+Start the server<br>
+`npm start`
+  
+### [Deployed App]()
 
-* Open [auth.js](server/utils/auth.js) and explain the `authMiddleware` function:
+## Contribution
+Please feel free to contribute in any way by forking the repo and creating a pull request.
 
-  * Whenever we make a request to our server, we will check if there's a token with the request and attempt to verify and decode it if there is.
+## Tests
+No tests are available for this app.
 
-  * We use the `return` statement to return the `req` object, either modified with user data or not modified at all, and the request will continue to go to its intended resolver function.
+## License
+This project is using the MIT license.
 
-* Open [resolvers.js](server/schemas/resolvers.js) and explain the following:
+## Questions❓
+If you have any questions, please contact me via [Email](mailto:liz.mackle@outlook.com) or [GitHub](https://github.com/LizMackle).
 
-  * Any time we need to implement authentication on a query or mutation, we can add a third parameter called `context` to the resolver function.
-
-  * The `context` object is whatever has been returned from our `authMiddleware` function, so it may or may not include a `user` property depending on the status of the JSON Web Token.
-
-  * If there is a `user` property, we can assume the user's token has been verified and the `user` property now holds data about the user that we stored in the token itself.
-
+## Credits
+This app was created by [Mayra Rivas Lara](https://github.com/MayraRivasLaray) | [Tahlia La Galia](https://github.com/tahlialg) | [Liz Mackle](https://github.com/LizMackle)
