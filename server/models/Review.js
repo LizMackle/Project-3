@@ -17,12 +17,10 @@ const reviewSchema = new Schema({
     type: String,
     required: false,
   },
-  content: [
-    {
+  content: {
       type: String,
       trim: true,
-    },
-  ],
+  },
 });
 
 // compare the incoming password with the hashed password
