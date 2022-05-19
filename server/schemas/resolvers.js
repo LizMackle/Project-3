@@ -4,12 +4,12 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return User.find();
+    user: async (parent, args, context) => {
+      return User.findOne({ _id: args.userId });
     },
 
-    user: async (parent, { userId }) => {
-      return User.findOne({ _id: userId });
+    me: async (parent, args, context) => {
+      return User.findOne({ _id: context.user._id });
     },
 
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
@@ -44,7 +44,7 @@ const resolvers = {
     //   return { token, user };
     // },
     login: async (parent, { email, password }) => {
-      const profile = await User.findOne({ email });
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError("User not found!");
