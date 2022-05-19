@@ -12,11 +12,11 @@ const typeDefs = gql`
   type Review {
     _id: ID
     userId: ID!
-    latitude: Number
-    longitude: Number
+    latitude: Int
+    longitude: Int
     title: String
     content: String
-    stars: Number
+    stars: Int
   }
 
   type Auth {

@@ -1,4 +1,4 @@
-const { Schema, models } = require("mongoose");
+const { Schema, model } = require("mongoose");
 const review = require("./Review");
 const bcrypt = require("bcrypt");
 
@@ -44,6 +44,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = models("User", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;
