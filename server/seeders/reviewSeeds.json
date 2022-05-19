@@ -1,19 +1,19 @@
 [
   {
-    "name": "Brian Kernighan",
-    "email": "bkernighan@techfriends.dev",
-    "password": "password01"
+    "latitude": -31.9523,
+    "longitude": 115.8613,
+    "title": "Safe place",
+    "comment": "One of the most wholesome films I have seen in a while. Profound at times and yet light hearted; smartly structured and yet sweetly wandering. A recommended watch in these bored and depressed quarantine days, because its hard to imagine anyone not finding some joy in this film.",
+    "stars": 2
     
   },
   {
-    "name": "Max Kanat-Alexander",
-    "email": "mkanatalexander@techfriends.dev",
-    "password": "password02"
+    "latitude": 18.0178,
+    "longitude": -76.8099,
+    "title": "Jamaica Beautiful place",
+    "comment": "One of the most wholesome films I have seen in a while. Profound at times and yet light hearted; smartly structured and yet sweetly wandering. A recommended watch in these bored and depressed quarantine days, because its hard to imagine anyone not finding some joy in this film.",
+    "stars": 3
    
-  },
-  {
-    "name": "Amiko",
-    "email": "amiko@techfriends.dev",
-    "password": "password03"
   }
+ 
 ]

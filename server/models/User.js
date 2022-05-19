@@ -23,9 +23,8 @@ const userSchema = new Schema({
   },
   review: [
     {
-      type: String,
-      required: false,
-      trim: true,
+      type: Schema.Types.ObjectId,
+      ref: 'review',
     },
   ],
 });
