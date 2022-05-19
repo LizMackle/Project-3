@@ -17,16 +17,15 @@ const reviewSchema = new Schema({
     type: String,
     required: false,
   },
-  content: {
-      type: String,
-      trim: true,
+  comment: {
+    type: String,
+    trim: true,
+  },
+  stars: {
+    type: Number,
+    default: 0,
   },
 });
-
-// compare the incoming password with the hashed password
-reviewSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
-};
 
 const Review = model("Review", reviewSchema);
 
