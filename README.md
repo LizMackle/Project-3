@@ -1,5 +1,5 @@
 # Project 3
-<a href="">![Deployed App](https://img.shields.io/badge/-Deployed-success?style=for-the-badge)</a> ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge&logo) ![Top language](https://img.shields.io/github/languages/top/lizmackle/Project3?color=yellow&style=for-the-badge&logo) ![Repo Size](https://img.shields.io/github/repo-size/lizmackle/Project3?color=orange&style=for-the-badge)
+<a href="">![Deployed App](https://img.shields.io/badge/-Deployed-success?style=for-the-badge)</a> ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge&logo) ![Top language](https://img.shields.io/github/languages/top/lizmackle/Travel-Map?color=yellow&style=for-the-badge&logo) ![Repo Size](https://img.shields.io/github/repo-size/lizmackle/Travel-Map?color=orange&style=for-the-badge)
 
 ## Description
 xxx
