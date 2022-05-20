@@ -12,38 +12,15 @@ const resolvers = {
       return User.findOne({ _id: context.user._id });
     },
 
-    // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-    // me: async (parent, args, context) => {
-    //   if (context.User) {
-    //     return Review.findOne({ _id: context.user._id });
-    //   }
-    //   throw new AuthenticationError("You need to be logged in!");
-    // },
+    reviews: async (parent, { latitude, longitude, title, comment, stars }, context) => {
+      return Review.find({_id: context.user._id});
+    },
 
-    // reviews: async () => {
-    //   return Review.find();
-    // },
-
-    // review: async (parent, { reviewId }) => {
-    //   return Review.findOne({ _id: reviewId });
-    // },
-    // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-    // me: async (parent, args, context) => {
-    //   if (context.User) {
-    //     return Review.findOne({ _id: context.user._id });
-    //   }
-    //   throw new AuthenticationError("You need to be logged in!");
-    // },
   },
 
   Mutation: {
-    // addReview: async (parent, { name, email, password }) => {
-    //   const review = await Review.create({ name, email, password });
-    //   const token = signToken(user);
 
-    //   return { token, user };
-    // },
-    login: async (parent, { email, password }) => {
+   login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -59,8 +36,20 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    // addUser
+    // addReview
+    // deleteUser
+    // deleteReview
+    
+    // addReview: async (parent, { name, email, password }) => {
+    //   const review = await Review.create({ name, email, password });
+    //   const token = signToken(user);
+
+    //   return { token, user };
+    // },
 
     // Add a third argument to the resolver to access data in our `context`
+
     // addreview: async (parent, { userId, review }, context) => {
     //   // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
     //   if (context.user) {
