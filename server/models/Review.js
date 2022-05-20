@@ -1,5 +1,33 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
+
+const revContSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: false,
+    },
+
+    text: {
+      type: String,
+      trim: true,
+    },
+
+    stars: {
+      type: Number,
+      default: 0,
+    },
+
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (timestamp) => dateFormat(timestamp),
+    },
+  },
+  {
+    id: true,
+  },
+);
+
 
 const reviewSchema = new Schema({
   latitude: {
@@ -8,24 +36,19 @@ const reviewSchema = new Schema({
     unique: true,
     trim: true,
   },
+
   longitude: {
     type: Number,
     required: true,
     unique: true,
   },
-  title: {
-    type: String,
-    required: false,
-  },
-  comment: {
-    type: String,
-    trim: true,
-  },
-  stars: {
-    type: Number,
-    default: 0,
-  },
-});
+
+  reviews: [revContSchema],
+},
+{
+ id: true,
+}
+);
 
 const Review = model("Review", reviewSchema);
 
