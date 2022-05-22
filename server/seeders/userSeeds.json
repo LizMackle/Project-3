@@ -1,18 +1,18 @@
 [
   {
-    "name": "Brian Kernighan",
+    "username": "Brian Kernighan",
     "email": "bkernighan@techfriends.dev",
     "password": "password01"
   },
 
   {
-    "name": "Liz Smith",
+    "username": "Liz Smith",
     "email": "lizSmith@email.com",
     "password": "password02"
   },
 
   {
-    "name": "Tahlia Johnson",
+    "username": "Tahlia Johnson",
     "email": "tahliajohnson@email.com",
     "password": "password03"
   }

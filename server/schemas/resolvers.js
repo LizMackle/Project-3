@@ -4,27 +4,45 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    user: async (parent, args, context) => {
-      return User.findOne({ _id: args.userId });
+    users: async () => {
+      return User.find().populate("reviews");
+    },
+
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).populate("reviews");
     },
 
     me: async (parent, args, context) => {
-      return User.findOne({ _id: context.user._id });
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate("reviews");
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
 
-    reviews: async (parent, { latitude, longitude, title, comment, stars }, context) => {
-      return Review.find({_id: context.user._id});
+    reviews: async (parent, { latitude, longitude, reviews }, context) => {
+      const params = username ? { username } : {};
+      return Review.find(params).sort({ createdAt: -1 });
     },
 
+    review: async (parent, { reviewId }) => {
+      return Review.findOne({ _id: reviewId });
+    },
   },
 
   Mutation: {
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
+    },
 
-   login: async (parent, { email, password }) => {
+    login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("User not found!");
+        throw new AuthenticationError(
+          "User not found with this email address!"
+        );
       }
 
       const correctPw = await user.isCorrectPassword(password);
@@ -36,55 +54,51 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    // addUser
-    // addReview
-    // deleteUser
-    // deleteReview
-    
-    // addReview: async (parent, { name, email, password }) => {
-    //   const review = await Review.create({ name, email, password });
-    //   const token = signToken(user);
 
-    //   return { token, user };
-    // },
+    addReview: async (parent, { review }, context) => {
+      if (context.user) {
+        const review = await Review.create({
+          reviewContent,
+          reviewAuthor: context.user.username,
+        });
 
-    // Add a third argument to the resolver to access data in our `context`
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { thoughts: thought._id } }
+        );
+        return review;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
 
-    // addreview: async (parent, { userId, review }, context) => {
-    //   // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
-    //   if (context.user) {
-    //     return User.findOneAndUpdate(
-    //       { _id: userId },
-    //       {
-    //         $addToSet: { reviews: review },
-    //       },
-    //       {
-    //         new: true,
-    //         runValidators: true,
-    //       }
-    //     );
-    //   }
-    //   // If user attempts to execute this mutation and isn't logged in, throw an error
-    //   throw new AuthenticationError("You need to be logged in!");
-    // },
-    // // Set up mutation so a logged in user can only remove their profile and no one else's
-    // removeUser: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return User.findOneAndDelete({ _id: context.user._id });
-    //   }
-    //   throw new AuthenticationError("You need to be logged in!");
-    // },
-    // // Make it so a logged in user can only remove a skill from their own profile
-    // removeReview: async (parent, { review }, context) => {
-    //   if (context.user) {
-    //     return User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $pull: { reviews: review } },
-    //       { new: true }
-    //     );
-    //   }
-    //   throw new AuthenticationError("You need to be logged in!");
-    // },
+    deleteUser: async (parent, { username, email, password }, context) => {
+      if (context.user) {
+        const user = await User.findOneAndDelete({
+          _id: userId,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id }
+          // { $pull: { reviews: review._id } }
+        );
+
+        throw new AuthenticationError("User has been deleted!");
+      }
+    },
+
+    deleteReview: async (parent, { reviewId }, context) => {
+      if (context.user) {
+        const review = await Review.findOneAndDelete({
+          _id: reviewId,
+          reviewAuthor: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { reviews: review._id } }
+        );
+      }
+    },
   },
 };
 

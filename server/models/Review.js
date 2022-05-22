@@ -1,34 +1,5 @@
 const { Schema, model } = require("mongoose");
 
-const revContSchema = new Schema(
-  {
-    title: {
-      type: String,
-      required: false,
-    },
-
-    text: {
-      type: String,
-      trim: true,
-    },
-
-    stars: {
-      type: Number,
-      default: 0,
-    },
-
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: (timestamp) => dateFormat(timestamp),
-    },
-  },
-  {
-    id: true,
-  },
-);
-
-
 const reviewSchema = new Schema({
   latitude: {
     type: Number,
@@ -43,12 +14,36 @@ const reviewSchema = new Schema({
     unique: true,
   },
 
-  reviews: [revContSchema],
-},
-{
- id: true,
-}
-);
+  reviewContent: [
+    {
+      title: {
+        type: String,
+        required: false,
+      },
+
+      text: {
+        type: String,
+        trim: true,
+      },
+
+      reviewAuthor: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+
+      stars: {
+        type: Number,
+        default: 0,
+      },
+
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
+});
 
 const Review = model("Review", reviewSchema);
 

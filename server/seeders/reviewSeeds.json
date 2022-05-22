@@ -3,7 +3,7 @@
   {
     "latitude": -31.9523,
     "longitude": 115.8613,
-    "reviews": [
+    "reviewContent": [
       {
       "title": "Perth has the best weather!",
       "text": "Perched on the banks of the wide Swan River, between the Indian Ocean and the sands of the Nullarbour Desert, Perth is one of the world's most isolated cities, yet still boasts an active beach scene and smoking nightlife. Family-friendly Cottesloe is brimming with swimmers, surfers and snorkelers.",
@@ -19,7 +19,7 @@
   {
     "latitude": 18.1096,
     "longitude": 77.2975,
-    "reviews": [
+    "reviewContent": [
       {
       "title": "Jamaica is beautiful!",
       "text": "Is there anything better than swaying from a hammock in a warm patch of Jamaican sun? If you're seeking laid-back vibes, you've come to the right place. But Jamaica offers plenty of outdoor adventure for those that want it, too. Consider diving into Blue Hole, rafting on Martha Brae River, even bobsledding down Mystic Mountain.",
@@ -41,7 +41,7 @@
   {
     "latitude": 2.6502,
     "longitude": 39.5696,
-    "reviews": [
+    "reviewContent": [
       {
       "title": "Palma de Majorca is Paradise",
       "text": "Mallorca is the largest of the Balearic Islands, and its capital is without doubt its greatest treasure. This makes Palma well worth visiting at any time of year – whether that be for the incredible climate, beaches, vibrant neighborhoods, bustling squares or the endless array of galleries, restaurants and bars.",
