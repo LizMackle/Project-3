@@ -5,27 +5,17 @@ const seedReview = require("./reviewSeeds.json");
 
 db.once("open", async () => {
   try {
+    // cleaning database
     await Review.deleteMany({});
     await User.deleteMany({});
 
-    await User.create(seedUser);
+    // bulk create each model
+    await User.insertMany(seedUser);
+    await Review.insertMany(seedReview);
 
-    for (let index = 0; index < seedReview; index++) {
-      const { _id, reviewAuthor } = await Review.create[seedReview[index]];
-      const name = await User.findByIdAndUpdate(
-        { name: reviewAuthor },
-        {
-          $addToSet: {
-            reviews: _id,
-          },
-        }
-      );
-    }
+    console.log("all done!🌱");
+    process.exit(0);
   } catch (err) {
-    console.error(err);
-    process.exit(1);
+    throw err;
   }
-
-  console.log("all done!🌱");
-  process.exit(0);
 });
