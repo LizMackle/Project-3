@@ -3,19 +3,8 @@
     "username": "Brian Kernighan",
     "email": "bkernighan@techfriends.dev",
     "password": "password01"
-  },
-
-  {
-    "username": "Liz Smith",
-    "email": "lizSmith@email.com",
-    "password": "password02"
-  },
-
-  {
-    "username": "Tahlia Johnson",
-    "email": "tahliajohnson@email.com",
-    "password": "password03"
   }
-  
+
+ 
 ]
        

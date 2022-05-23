@@ -14,14 +14,14 @@ const reviewSchema = new Schema({
     unique: true,
   },
 
-  reviewContent: [
+  reviewSection: [
     {
       title: {
         type: String,
         required: false,
       },
 
-      text: {
+      content: {
         type: String,
         trim: true,
       },
