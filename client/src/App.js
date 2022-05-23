@@ -1,5 +1,5 @@
 import React from "react";
-import "mapbox-gl/dist/mapbox-gl.css";
+// import "mapbox-gl/dist/mapbox-gl.css";
 import {
   ApolloClient,
   InMemoryCache,
@@ -11,9 +11,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Map from "./components/Map";
+// import Map from "./components/Map";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -44,7 +45,7 @@ function App() {
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/map" element={<Map />} />
+              {/* <Route path="/map" element={<Map />} /> */}
             </Routes>
           
       </Router>
