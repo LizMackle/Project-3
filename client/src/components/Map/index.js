@@ -1,6 +1,5 @@
 // import React from "react";
-// // import { Link } from "react-router-dom";
-
+// import { Link } from "react-router-dom"
 // import Map, { Marker, Popup } from "react-map-gl";
 // import "mapbox-gl/dist/mapbox-gl.css";
 // const MAPBOX_TOKEN =
