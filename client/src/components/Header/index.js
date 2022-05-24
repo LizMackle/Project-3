@@ -1,13 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import Typewriter from "typewriter-effect";
 import Auth from "../../utils/auth";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+
+    navigate("/login");
   };
+
   return (
     <header className="text-dark mb-5 display-flex align-center">
       <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
@@ -41,14 +46,9 @@ const Header = () => {
         </p>
         <div>
           {Auth.loggedIn() ? (
-            <>
-              {/* <Link className="btn btn-lg btn-primary m-2" to="/me">
-                View My Profile
-              </Link> */}
-              <button className="btn btn-lg btn-dark m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
+            <button className="btn btn-lg btn-dark m-2" onClick={logout}>
+              Logout
+            </button>
           ) : (
             <>
               <Link className="btn btn-lg btn-dark m-2" to="/login">
