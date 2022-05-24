@@ -1,38 +1,24 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
-    query getUser(userId: ID!) {
-        user(userId: $userId) {
-            _id
-            username
-            email
-            reviews {
-                _id
-                latitude
-                longitude
-                reviewSection {
-                    _id 
-                    title
-                    content
-                    reviewAuthor
-                    stars
-                    createdAt
-                }
-            }
-        }
+  query getUser(userId: ID!) {
+    user(userId: $userId) {
+      _id
+      username
+      email
     }
+  }
 `;
 
 export const QUERY_REVIEWS = gql`
   query getReviews {
-    _id
-    latitude
-    longitude
-    reviewSection {
+    reviews {
       _id
+      latitude
+      longitude
       title
       content
-      reviewAuthor
+      reviewAuthorId
       stars
       createdAt
     }
@@ -41,39 +27,25 @@ export const QUERY_REVIEWS = gql`
 
 export const QUERY_SINGLE_REVIEW = gql`
   query getSingleReview($reviewId: ID!) {
-    review {
+    review(reviewId: $reviewId) {
       _id
       latitude
       longitude
-      reviewSection {
-        _id
-        title
-        content
-        reviewAuthor
-        stars
-        createdAt
-      }
+      title
+      content
+      reviewAuthorId
+      stars
+      createdAt
     }
   }
 `;
 
-export const QUERY_SINGLE_ME = gql`
+export const QUERY_ME = gql`
   query me {
-    _id
-    username
-    email
-    reviews {
+    me {
       _id
-      latitude
-      longitude
-      reviewSection {
-        _id
-        title
-        content
-        reviewAuthor
-        stars
-        createdAt
-      }
+      username
+      email
     }
   }
 `;
