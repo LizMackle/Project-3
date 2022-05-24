@@ -10,8 +10,23 @@ db.once("open", async () => {
     await User.deleteMany({});
 
     // bulk create each model
-    await User.insertMany(seedUser);
-    await Review.insertMany(seedReview);
+    // const users = await User.insertMany(seedUser);
+
+    const user = new User({
+      username: "Brian Kernighan",
+      email: "bkernighan@techfriends.dev",
+      password: "password01",
+    });
+
+    await user.save();
+
+    const test = seedReview.map((r) => {
+      r.reviewAuthorId = user._id;
+
+      return r;
+    });
+
+    await Review.insertMany(test);
 
     console.log("all done!🌱");
     process.exit(0);

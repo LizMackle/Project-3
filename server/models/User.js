@@ -22,13 +22,6 @@ const userSchema = new Schema(
       required: true,
       minlength: 6,
     },
-
-    reviews: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Review",
-      },
-    ],
   },
   {
     id: true,
