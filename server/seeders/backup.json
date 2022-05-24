@@ -1,0 +1,85 @@
+[
+    {
+      "latitude": -31.9523,
+      "longitude": 115.8613,
+      "reviewSection": [
+        {
+        "title": "Perth has the best weather!",
+        "content": "Perched on the banks of the wide Swan River, between the Indian Ocean and the sands of the Nullarbour Desert, Perth is one of the world's most isolated cities, yet still boasts an active beach scene and smoking nightlife. Family-friendly Cottesloe is brimming with swimmers, surfers and snorkelers.",
+        "reviewAuthor": "Brian Kernighan",
+        "stars": 5
+        },
+        {
+          "title": "We loved Perth!",
+          "content": "The Pinnacles Magic tour is a lot of fun, very informative and a great way to see some of Western Australia's most beautiful national parks. On the Pinnacles Magic tour you will get an introduction into local Aboriginal history in Yanchep National Park, an area of great significance in both Aboriginal and modern Australian cultures.",
+          "reviewAuthor": "Liz Smith",
+          "stars": 5
+          
+          }
+      ]
+    },
+    {
+      "latitude": 18.1096,
+      "longitude": 77.2975,
+      "reviewSection": [
+        {
+        "title": "Jamaica is beautiful!",
+        "text": "Is there anything better than swaying from a hammock in a warm patch of Jamaican sun? If you're seeking laid-back vibes, you've come to the right place. But Jamaica offers plenty of outdoor adventure for those that want it, too. Consider diving into Blue Hole, rafting on Martha Brae River, even bobsledding down Mystic Mountain.",
+        "reviewAuthor": "Liz Smith",
+        "stars": 3
+        },
+        {
+        "title": "Not impressed!",
+        "text": "The beach was not that impressive as most people utilized the pool area and its surroundings. Was “very” disappointed with sports bar as that was our first stop when we arrived and the restaurants and buffet was not open yet.",
+        "reviewAuthor": "Tahlia Johnson",
+        "stars": 1
+        },
+        {
+        "title": "Loved the Jerk Hut!!",
+        "text": "The architectural design of the resort in general was. wry impressive. The amenities and restaurants were very delicious in my opinion and enjoyed them. We did the El dorado restaurant and the food was good. Loved the jerk hut.",
+        "reviewAuthor": "Brian Kernighan",  
+        "stars": 3
+        }
+  
+      ]
+    },
+    {
+      "latitude": 2.6502,
+      "longitude": 39.5696,
+      "reviewSection": [
+        {
+        "title": "Palma de Majorca is Paradise",
+        "content": "Mallorca is the largest of the Balearic Islands, and its capital is without doubt its greatest treasure. This makes Palma well worth visiting at any time of year – whether that be for the incredible climate, beaches, vibrant neighborhoods, bustling squares or the endless array of galleries, restaurants and bars.",
+        "reviewAuthor": "Brian Kernighan",
+        "stars": 4
+        }
+      ]
+    },
+    {
+      "latitude": -31.9523,
+      "longitude": 115.8613,
+      "title": "We loved Perth!",
+      "content": "The Pinnacles Magic tour is a lot of fun, very informative and a great way to see some of Western Australia's most beautiful national parks. On the Pinnacles Magic tour you will get an introduction into local Aboriginal history in Yanchep National Park, an area of great significance in both Aboriginal and modern Australian cultures.",
+      "reviewAuthor": "Liz Smith",
+      "stars": 5
+    },
+    {
+      "latitude": 18.1096,
+      "longitude": 77.2975,
+      "title": "Not impressed!",
+      "content": "The beach was not that impressive as most people utilized the pool area and its surroundings. Was “very” disappointed with sports bar as that was our first stop when we arrived and the restaurants and buffet was not open yet.",
+      "reviewAuthor": "Tahlia Johnson",
+      "stars": 1
+    },
+    {
+      "latitude": 18.1096,
+      "longitude": 77.2975,
+      "title": "Loved the Jerk Hut!!",
+      "content": "The architectural design of the resort in general was. wry impressive. The amenities and restaurants were very delicious in my opinion and enjoyed them. We did the El dorado restaurant and the food was good. Loved the jerk hut.",
+      "reviewAuthor": "Brian Kernighan",  
+      "stars": 3
+    }  
+  ]
+  
+     
+     

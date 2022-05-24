@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 // import Typewriter from "typewriter-effect";
+=======
+>>>>>>> Mayra400
 import Auth from "../../utils/auth";
 
 const Header = () => {
