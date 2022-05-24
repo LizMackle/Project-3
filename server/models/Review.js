@@ -14,35 +14,60 @@ const reviewSchema = new Schema({
     unique: true,
   },
 
-  reviewSection: [
-    {
-      title: {
-        type: String,
-        required: false,
-      },
+  title: {
+    type: String,
+    required: false,
+  },
 
-      content: {
-        type: String,
-        trim: true,
-      },
+  content: {
+    type: String,
+    trim: true,
+  },
 
-      reviewAuthor: {
-        type: String,
-        required: true,
-        trim: true,
-      },
+  reviewAuthorId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 
-      stars: {
-        type: Number,
-        default: 0,
-      },
+  stars: {
+    type: Number,
+    default: 0,
+  },
 
-      createdAt: {
-        type: Date,
-        default: Date.now,
-      },
-    },
-  ],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+
+  // reviewSection: [
+  //   {
+  //     title: {
+  //       type: String,
+  //       required: false,
+  //     },
+
+  //     content: {
+  //       type: String,
+  //       trim: true,
+  //     },
+
+  //     reviewAuthor: {
+  //       type: String,
+  //       required: true,
+  //       trim: true,
+  //     },
+
+  //     stars: {
+  //       type: Number,
+  //       default: 0,
+  //     },
+
+  //     createdAt: {
+  //       type: Date,
+  //       default: Date.now,
+  //     },
+  //   },
+  // ],
 });
 
 const Review = model("Review", reviewSchema);

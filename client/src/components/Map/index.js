@@ -1,5 +1,5 @@
 // import React from "react";
-// import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom";
 // import Map, { Marker, Popup } from "react-map-gl";
 // import "mapbox-gl/dist/mapbox-gl.css";
 // const MAPBOX_TOKEN =
@@ -11,13 +11,13 @@
 //   },
 // ];
 
-// export default function App() {
+// export default function Mapp() {
 //   const [viewState, setViewState] = React.useState({
 //     latitude: -31.953512,
 //     longitude: 115.857048,
 //     zoom: 14,
 //   });
-//   const [popupCoorinates, setPopupCoorinates] = React.useState(null);
+//   const [popupCoordinates, setPopupCoordinates] = React.useState(null);
 //   return (
 //     <Map
 //       {...viewState}
@@ -27,7 +27,7 @@
 //       mapboxAccessToken={MAPBOX_TOKEN}
 //       onClick={(event) => {
 //         console.log("MAP", event);
-//         setPopupCoorinates({
+//         setPopupCoordinates({
 //           latitude: event.lngLat.lat,
 //           longitude: event.lngLat.lng,
 //         });
@@ -56,12 +56,12 @@
 //           </div>
 //         </Marker>
 //       ))}
-//       {popupCoorinates !== null && (
+//       {popupCoordinates !== null && (
 //         <Popup
-//           longitude={popupCoorinates.longitude}
-//           latitude={popupCoorinates.latitude}
+//           longitude={popupCoordinates.longitude}
+//           latitude={popupCoordinates.latitude}
 //           anchor="bottom"
-//           onClose={() => setPopupCoorinates(null)}
+//           onClose={() => setPopupCoordinates(null)}
 //           closeOnClick={false}
 //         >
 //           <div>TITLE</div>
