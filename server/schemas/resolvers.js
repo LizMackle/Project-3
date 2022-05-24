@@ -12,17 +12,17 @@ const resolvers = {
       return await User.findOne({ _id: userId });
     },
 
-    reviews: async (parent, {}) => {
-      return await Review.find({}).sort({ createdAt: -1 });
-    },
+    reviews: async (parent, args, context) => {
+      if (context.user) {
+        return await Review.find({}).sort({ createdAt: -1 });
+      }
 
-    review: async (parent, { reviewId }) => {
-      return Review.findOne({ _id: reviewId });
+      throw new AuthenticationError("You need to be logged in!");
     },
 
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("reviews");
+        return User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -53,11 +53,19 @@ const resolvers = {
       return { token, user };
     },
 
-    addReview: async (parent, { reviewId }, context) => {
+    addReview: async (
+      parent,
+      { latitude, longitude, title, content, stars },
+      context
+    ) => {
       if (context.user) {
         const review = await Review.create({
-          reviewId,
-          reviewAuthor: context.user.username,
+          latitude,
+          longitude,
+          title,
+          content,
+          stars,
+          reviewAuthorId: context.user._id,
         });
 
         await User.findOneAndUpdate(
@@ -66,41 +74,6 @@ const resolvers = {
         );
 
         return review;
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
-
-    deleteUser: async (parent, { userId }, context) => {
-      if (context.user) {
-        const deletedUser = await User.findOneAndDelete({
-          _id: userId,
-        });
-
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { users: deletedUser._id } }
-        );
-        console.log(deletedUser);
-        return deletedUser;
-      }
-
-      throw new AuthenticationError("You need to be logged in!");
-    },
-
-    deleteReview: async (parent, { reviewId }, context) => {
-      if (context.user) {
-        return Review.findOneAndUpdate(
-          { _id: reviewId },
-          {
-            $pull: {
-              reviewSection: {
-                _id: reviewSectionId,
-                reviewAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
-        );
       }
       throw new AuthenticationError("You need to be logged in!");
     },
