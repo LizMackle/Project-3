@@ -4,6 +4,7 @@ import { QUERY_REVIEWS } from "../utils/queries";
 import Map, { Marker, Popup, FullscreenControl } from "react-map-gl";
 // import MapRender from "../components/Map/index";
 import "mapbox-gl/dist/mapbox-gl.css";
+import StarRating from "../components/Stars/Stars";
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoibGl6bWFja2xlIiwiYSI6ImNsMzlvZmh5bTBibWEzaW82aXdheTl2MGgifQ.EcFXGRHbQRf-CKEU3YBUwA";
@@ -88,7 +89,9 @@ export default function MapPage() {
               }}
             >
               Add Review
+
             </button>
+            <StarRating/>
           </Popup>
         )}
         <FullscreenControl />
