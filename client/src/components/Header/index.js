@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import Typewriter from "typewriter-effect";
 import Auth from "../../utils/auth";
+// import "./header.css";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -18,10 +19,11 @@ const Header = () => {
       <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
         {/* <Link className="text-dark" to="/"> */}
         <h1
-          className="text-dark m-0"
-          style={{ fontSize: "3.5rem", fontFamily: "Montserrat" }}
+          className="text-dark m-0 pt-5"
+          id="header-title"
+          style={{ fontSize: "3.1rem", fontFamily: "Montserrat" }}
         >
-          Travel Map
+          WanderView
         </h1>
         {/* <h1>
           <Typewriter
@@ -35,6 +37,7 @@ const Header = () => {
         {/* </Link> */}
         <p
           className="m-0"
+          id="sub-title"
           style={{
             fontSize: "1.1rem",
             fontWeight: "700",
@@ -42,23 +45,22 @@ const Header = () => {
             padding: "1rem",
           }}
         >
-          📍 Pin a location & share your review!
+          📍 Wander the world, pin a destination & share your review!
         </p>
         <div>
-          {Auth.loggedIn() ? (
+          {/* {Auth.loggedIn() ? (
             <button className="btn btn-lg btn-dark m-2" onClick={logout}>
-              Logout
+              LOGOUT
             </button>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-dark m-2" to="/login">
-                LOGIN
-              </Link>
-              <Link className="btn btn-lg btn-dark m-2" to="/signup">
-                SIGNUP
-              </Link>
-            </>
-          )}
+          ) : ( */}
+          <>
+            <Link className="btn btn-lg btn-dark m-2 text-white" to="/login">
+              LOGIN
+            </Link>
+            <Link className="btn btn-lg btn-dark m-2 text-white" to="/signup">
+              SIGNUP
+            </Link>
+          </>
         </div>
       </div>
     </header>

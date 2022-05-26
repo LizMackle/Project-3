@@ -1,10 +1,10 @@
 import * as React from "react";
-import Map, { Marker, Popup } from "react-map-gl";
+import Map, { Marker, Popup, FullscreenControl } from "react-map-gl";
 // import MapRender from "../components/Map/index";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const MAPBOX_TOKEN =
-  "pk.eyJ1IjoibGl6bWFja2xlIiwiYSI6ImNsMzlvZmh5bTBibWEzaW82aXdheTl2MGgifQ.EcFXGRHbQRf-CKEU3YBUwA"; // Set your mapbox token here
+  "pk.eyJ1IjoibGl6bWFja2xlIiwiYSI6ImNsMzlvZmh5bTBibWEzaW82aXdheTl2MGgifQ.EcFXGRHbQRf-CKEU3YBUwA";
 
 const reviews = [
   {
@@ -26,7 +26,13 @@ export default function MapPage() {
     <Map
       {...viewState}
       onMove={(evt) => setViewState(evt.viewState)}
-      style={{ width: "100vw", height: "100vh" }}
+      style={{
+        position: "absolute",
+        left: "0",
+        top: "0",
+        width: "100vw",
+        height: "90.5vh",
+      }}
       mapStyle="mapbox://styles/mapbox/streets-v11"
       mapboxAccessToken={MAPBOX_TOKEN}
       onClick={(event) => {
@@ -73,6 +79,7 @@ export default function MapPage() {
           <textarea />
         </Popup>
       )}
+      <FullscreenControl />
     </Map>
   );
 }
