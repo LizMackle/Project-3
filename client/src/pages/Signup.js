@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import "./signup.css";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Signup = () => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data  }= await addUser({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
@@ -45,13 +46,13 @@ const Signup = () => {
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+        <div className="card" id="signup-card">
+          <h4 className="signup-header">Signup</h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
-                placeholder="Your username"
+                placeholder="Username"
                 name="username"
                 type="text"
                 value={formState.name}
@@ -59,7 +60,7 @@ const Signup = () => {
               />
               <input
                 className="form-input"
-                placeholder="Your email"
+                placeholder="Email"
                 name="email"
                 type="email"
                 value={formState.email}
@@ -67,7 +68,7 @@ const Signup = () => {
               />
               <input
                 className="form-input"
-                placeholder="******"
+                placeholder="Password"
                 name="password"
                 type="password"
                 value={formState.password}
@@ -75,6 +76,7 @@ const Signup = () => {
               />
               <button
                 className="btn btn-block btn-info"
+                id="signup-btn"
                 style={{ cursor: "pointer" }}
                 type="submit"
               >
@@ -83,9 +85,7 @@ const Signup = () => {
             </form>
 
             {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
+              <div className="my-1 p-1 text-white">{error.message}</div>
             )}
           </div>
         </div>
