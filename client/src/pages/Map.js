@@ -9,12 +9,6 @@ import StarRating from "../components/Stars/Stars";
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoibGl6bWFja2xlIiwiYSI6ImNsMzlvZmh5bTBibWEzaW82aXdheTl2MGgifQ.EcFXGRHbQRf-CKEU3YBUwA";
 
-// const reviews = [
-//   {
-//     longitude: 115.8613,
-//     latitude: -31.9523,
-//   },
-// ];
 
 export default function MapPage() {
   const {data} = useQuery(QUERY_REVIEWS);
@@ -64,12 +58,7 @@ export default function MapPage() {
                 event.stopPropagation();
                 console.log("MARKER", event);
                 // TODO: display review
-              }}
-              style={{
-                background: "red",
-                height: 100,
-                width: 100,
-              }}
+              }}              
             ></div> */}
           </Marker>
         ))}
