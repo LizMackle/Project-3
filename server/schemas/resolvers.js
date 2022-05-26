@@ -13,7 +13,8 @@ const resolvers = {
     },
 
     reviews: async (parent, args, context) => {
-      if (context.user) {
+      // if (context.user) 
+      {
         return await Review.find({}).sort({ createdAt: -1 });
       }
 
