@@ -23,6 +23,16 @@ const Footer = () => {
         >
           &copy; {new Date().getFullYear()} - WanderView🤍
         </h5>
+        <div
+          className="About-page"
+          style={{
+            fontSize: "0.9rem",
+            fontFamily: "Montserrat",
+            color: "black",
+          }}
+        >
+          <a href="/about">About us</a>
+        </div>
       </div>
     </footer>
   );
