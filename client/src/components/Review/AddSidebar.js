@@ -5,7 +5,7 @@ import { ADD_REVIEW } from "../../utils/mutations";
 import { QUERY_ME, QUERY_REVIEWS } from "../../utils/queries";
 import Auth from '../../utils/auth';
 
-export default function Sidebar(props) {
+export default function AddSidebar(props) {
   function close() {
     props.closeSidebar();
   };
@@ -71,7 +71,7 @@ export default function Sidebar(props) {
       }}
     >
       <input
-        className="review-title"
+        className="add-review-title"
         placeholder="Title"
         style={{
           height: "32px",
@@ -92,7 +92,7 @@ export default function Sidebar(props) {
         X
       </button>
       <textarea
-        className="review-text"
+        className="add-review-text"
         placeholder="Review"
         style={{
           marginTop: "5px",
@@ -103,7 +103,7 @@ export default function Sidebar(props) {
         }}
       ></textarea>
       <div className="rating-box" style={{ paddingLeft: "5px" }}>
-        <StarRating />
+        <StarRating className="add-review-stars" />
       </div>
       <button
         className="btn p-1 bg-dark text-white"
@@ -117,13 +117,6 @@ export default function Sidebar(props) {
       >
         Submit
       </button>
-      {/* <div>
-        <img
-          src="https://i.ibb.co/nzDNnYg/clipart.png"
-          alt=""
-          style={{ width: "90%", height: "90%", marginLeft: "10px" }}
-        ></img>
-      </div> */}
     </div>
     </form>
   );

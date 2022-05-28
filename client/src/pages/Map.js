@@ -3,7 +3,8 @@ import { useQuery } from "@apollo/client";
 import { QUERY_REVIEWS } from "../utils/queries";
 import Map, { Marker, Popup, FullscreenControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Sidebar from "../components/Review/Sidebar";
+import AddSidebar from "../components/Review/AddSidebar";
+import ViewSidebar from "../components/Review/ViewSidebar";
 import { useNavigate } from "react-router-dom";
 
 const MAPBOX_TOKEN =
@@ -22,6 +23,8 @@ export default function MapPage() {
   console.log(data);
 
   const [popupCoordinates, setPopupCoordinates] = React.useState(null);
+
+  const [displayreview, setDisplayReview] = React.useState(false);
 
   const [displayform, setDisplayForm] = React.useState(false);
 
@@ -70,6 +73,9 @@ export default function MapPage() {
                 borderRadius: "4px",
                 marginRight: "5px",
               }}
+              onClick={() => {
+                setDisplayReview(true);
+              }}
             >
               View Review
             </button>
@@ -91,6 +97,16 @@ export default function MapPage() {
         <FullscreenControl />
       </Map>
 
+      {displayreview && (
+        <ViewSidebar
+          closeViewSidebar={() => setDisplayReview(false)}
+        ></ViewSidebar>
+      )}
+
+      {displayform && (
+        <AddSidebar closeSidebar={() => setDisplayForm(false)}></AddSidebar>
+      )}
+
       <button
         style={{
           position: "fixed",
@@ -102,10 +118,6 @@ export default function MapPage() {
       >
         &larr; Go back
       </button>
-
-      {displayform && (
-        <Sidebar closeSidebar={() => setDisplayForm(false)}></Sidebar>
-      )}
     </>
   );
 }

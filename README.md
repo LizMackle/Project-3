@@ -1,5 +1,5 @@
 # ✈️ WanderView ✈️
-<a href="">![Deployed App](https://img.shields.io/badge/-Deployed-success?style=for-the-badge)</a> ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge&logo) ![Top language](https://img.shields.io/github/languages/top/lizmackle/Travel-Map?color=yellow&style=for-the-badge&logo) ![Repo Size](https://img.shields.io/github/repo-size/lizmackle/Travel-Map?color=orange&style=for-the-badge)
+<a href="">![Deployed App](https://img.shields.io/badge/-Deployed-success?style=for-the-badge)</a> ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge&logo) ![Top language](https://img.shields.io/github/languages/top/lizmackle/WanderView?color=yellow&style=for-the-badge&logo) ![Repo Size](https://img.shields.io/github/repo-size/lizmackle/WanderView?color=orange&style=for-the-badge)
 
 ## Description
 A MERN powered application created for users to view and add reviews on locations all over the world, allowing users to share their experience with a restaurant, hotel or holiday destination by simply clicking a location on the map, adding their review and star rating to generate a pin drop.
@@ -26,7 +26,7 @@ A MERN powered application created for users to view and add reviews on location
 
 ## Installation
 Clone the Github repository:<br>
-`xxx`
+`https://github.com/LizMackle/WanderView.git`
 
 Install all dependencies required for application:<br>
 `npm install` from the root directory.
