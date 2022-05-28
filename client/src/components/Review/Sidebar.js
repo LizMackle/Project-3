@@ -1,11 +1,63 @@
-import React from "react";
+import { useMutation } from "@apollo/client";
+import React, { useState } from "react";
 import StarRating from "../../components/Stars/Stars";
+import { ADD_REVIEW } from "../../utils/mutations";
+import { QUERY_ME, QUERY_REVIEWS } from "../../utils/queries";
+import Auth from '../../utils/auth';
 
 export default function Sidebar(props) {
   function close() {
     props.closeSidebar();
-  }
+  };
+// ADD REVIEW
+  const [reviewTitle, setReviewTitle] = useState('');
+
+  const [reviewContent, setReviewContent] = useState('');
+
+  const [addReview, { error }]= useMutation(ADD_REVIEW.definitions, {
+    
+    update(cache, { data: addReview }){
+      try {
+        const { reviews } = cache.readQuery({ query: QUERY_REVIEWS});
+
+        cache.writeQuery({
+          query: QUERY_REVIEWS,
+          data: { reviews: [addReview, ...reviews]}
+        });
+      } catch (e) {
+        console.error(e);
+      }
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, reviews: [...me.reviews, addReview] } },
+      });
+    }
+  });
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addReview ({
+        variables: {
+          reviewContent,
+          reviewAuthorId: Auth.data.username,
+        }
+      });
+      setReviewContent('');
+    } catch (err) {
+      console.error(err);
+    }
+
+  };
+
+
+
   return (
+    <form
+    onSubmit={handleFormSubmit}
+    >
     <div
       style={{
         position: "fixed",
@@ -73,5 +125,6 @@ export default function Sidebar(props) {
         ></img>
       </div> */}
     </div>
+    </form>
   );
 }
