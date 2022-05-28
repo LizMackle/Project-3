@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/mutations";
+import { LOGIN_USER } from "../../utils/mutations";
 import "./login.css";
 
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -45,6 +47,7 @@ const Login = (props) => {
 
   return (
     <main className="flex-row justify-center mb-4">
+      <Header />
       <div className="col-12 col-lg-10">
         <div className="card" id="login-card">
           <h4 className="login-header">Login</h4>
@@ -82,6 +85,7 @@ const Login = (props) => {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 };

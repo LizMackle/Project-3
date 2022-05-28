@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { ADD_USER } from "../utils/mutations";
+import { ADD_USER } from "../../utils/mutations";
 import { Link } from "react-router-dom";
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 import "./signup.css";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -45,6 +47,7 @@ const Signup = () => {
 
   return (
     <main className="flex-row justify-center mb-4">
+      <Header />
       <div className="col-12 col-lg-10">
         <div className="card" id="signup-card">
           <h4 className="signup-header">Signup</h4>
@@ -96,6 +99,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 };

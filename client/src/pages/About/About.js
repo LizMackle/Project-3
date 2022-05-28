@@ -3,10 +3,13 @@ import { FiGithub } from "react-icons/fi";
 import { TiSocialLinkedin } from "react-icons/ti";
 import { MdPersonOutline } from "react-icons/md";
 import "./About.css";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 const About = () => {
   return (
     <>
+      <Header />
       <div className="full-container">
         <div className="container about-container ">
           <div className="row h-100 text-center py-5">
@@ -43,7 +46,7 @@ const About = () => {
               <div className="name">Liz Mackle</div>
               <div className="about">FOUNDER</div>
               <div className="social-links">
-                <a href="https://lizmackle.github.io/My_Portfolio/">
+                <a href="https://lizmackle.github.io/React_Portfolio/">
                   <MdPersonOutline
                     id="portfolioicon"
                     size="1.5rem"
@@ -115,6 +118,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

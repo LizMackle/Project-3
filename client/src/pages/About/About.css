@@ -9,7 +9,7 @@
 }
 
 .team-container {
-    margin-bottom: 2rem;
+    margin-bottom: 10rem;
 }
 
 p {
@@ -48,8 +48,8 @@ line-height: 50px;
 }
 
 .teams img {
-    width: 220px;
-    height: 220px;
+    width: 100%;
+    /* height: 220px; */
 }
 
 .name {
@@ -76,8 +76,30 @@ line-height: 50px;
     padding-top: 5px;
 }
 
+@media screen and (max-width: 998px) {
+    .teams{
+        max-width: 100%;
+    }
+    #signup-card {
+        max-width: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 788px) {
+    .teams{
+        max-width: 100%;
+    }
+    #signup-card {
+        max-width: 100%;
+    }
+    
+}
 
 @media screen and (max-width: 500px) {
+    .teams{
+        max-width: 100%;
+    }
     #signup-card {
         max-width: 100%;
     }
