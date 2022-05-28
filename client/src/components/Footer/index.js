@@ -1,12 +1,13 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import "./footer.css";
 
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className="w-100 mt-auto text-dark p-2 bg-white">
-      <div className="container text-center mb-2">
+    <footer className="text-dark p-2 bg-white">
+      <div className="container text-center mb-2" id="footer-container">
         {location.pathname !== "/" && (
           <button
             className="btn btn-dark mb-2 text-white"

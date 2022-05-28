@@ -13,17 +13,80 @@
     "title": "Jamaica is beautiful!",
     "content": "Is there anything better than swaying from a hammock in a warm patch of Jamaican sun? If you're seeking laid-back vibes, you've come to the right place. But Jamaica offers plenty of outdoor adventure for those that want it, too. Consider diving into Blue Hole, rafting on Martha Brae River, even bobsledding down Mystic Mountain.",
     "reviewAuthor": "Liz Smith",
-    "stars": 3
+    "stars": 4
   },
   {
     "latitude": 2.6502,
     "longitude": 39.5696,
     "title": "Palma de Majorca is Paradise",
     "content": "Mallorca is the largest of the Balearic Islands, and its capital is without doubt its greatest treasure. This makes Palma well worth visiting at any time of year – whether that be for the incredible climate, beaches, vibrant neighborhoods, bustling squares or the endless array of galleries, restaurants and bars.",
-    "reviewAuthor": "Brian Kernighan",
+    "reviewAuthor": "Paul Heart",
     "stars": 4
+  },
+  {
+    "latitude": 40.46,
+    "longitude": 3.74,
+    "title": "What an amazing time in Spain!",
+    "content": "I had lots of fun on my trip to Spain. Besides visiting family, I also went to different parts of Spain like Madrid, Fuentenovilla, Malaga, Getafe, Torre Molinos, and many other smaller cities. I had a blast.",
+    "reviewAuthor": "Ben Jones",
+    "stars": 5
+  },
+  {
+    "latitude": 16.52,
+    "longitude": 105.31,
+    "title": "Russia has it all!",
+    "content": "The largest country in the world really has it all—mountains, valleys, frozen lands and warm sands, and an incredible number of amazing natural destinations to impress any visitor. Some of the oldest cities in Russia, including Moscow and St. Petersburg, still retain their imperial splendor—obvious not only in their architecture but also in their majestic parks, shopping centers, and even metro stations.",
+    "reviewAuthor": "Jamie Brown",
+    "stars": 3
+  },
+  {
+    "latitude": 56.13,
+    "longitude": 106.34,
+    "title": "Canada!",
+    "content": "Canada's natural beauty, from mountains and glaciers to secluded lakes and forests, is almost unparalleled worldwide. But Canada's allure is not just the great outdoors. Canada has cosmopolitan cities that are clean, safe, friendly, and multicultural.",
+    "reviewAuthor": "Katie Harris",
+    "stars": 5
+  },
+  {
+    "latitude": 21.52,
+    "longitude": 77.78,
+    "title": "Cuba Y Azucar!!!!",
+    "content": "This little island's big personality gives it a movie set vibe, but our Cuba holiday reviews are far from fiction. Enthralling history and seductive scenery, all set to a Caribbean rhythm, gives Cuba a unique appeal, but don’t just take our word for it; browse Cuba holiday reviews from Intrepid travelers and let this vibrant nation draw you in.",
+    "reviewAuthor": "Charlie Davis",
+    "stars": 5
+  },
+  {
+    "latitude": 14.23,
+    "longitude": 51.92,
+    "title": "Spectacular Brazil",
+    "content": "Brazil is a fantastic country with friendly people. The whole trip was amazing and definitely done the right way around. Rio was interesting, Paraty was completely different to any place I've been before (Frozen in time!) but wonderful.",
+    "reviewAuthor": "Gavin Clift",
+    "stars": 3
+  },
+  {
+    "latitude": 60.12,
+    "longitude": 18.64,
+    "title": "Sweden excelled all our expectations!",
+    "content": "With its rich history and varied landscapes, Sweden is a traveler's paradise. If you love the outdoors, it's certainly hard to beat. The air and water are crystal clean, and there are thousands of acres of unspoiled forests and majestic lakes to explore, not to mention vast archipelagos along its coasts.",
+    "reviewAuthor": "Saul Allen",
+    "stars": 4
+  },
+  {
+    "latitude": 35.86,
+    "longitude": 104.19,
+    "title": "China, not bad but busy!",
+    "content": "Although our trip was brief this time we managed to see the Great Wall, The Forbidden City and Terracotta Warriors as well as many other interesting places! Great holiday but not sure we will go back.",
+    "reviewAuthor": "Cathryn Mann",
+    "stars": 3
+  },
+  {
+    "latitude": 64.96,
+    "longitude": 19.02,
+    "title": "Iceland has the most incredible landscape!",
+    "content": "Iceland is a place of surreal beauty.",
+    "reviewAuthor": "Liz Howlett",
+    "stars": 5
   }
-
 ]
     
    

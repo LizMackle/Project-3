@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className="text-dark mb-5 display-flex align-center">
-      <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
+      <div className="container w-100 flex-column justify-space-between-lg justify-center align-center text-center">
         {/* <Link className="text-dark" to="/"> */}
         <h1
           className="text-dark m-0 pt-5"
