@@ -86,6 +86,14 @@
     "content": "Iceland is a place of surreal beauty.",
     "reviewAuthor": "Liz Howlett",
     "stars": 5
+  },
+  {
+    "latitude": 19.01,
+    "longitude": 29.15,
+    "title": "Best Safari Tour!",
+    "content": "Zimbabwe is a fantastic safari destination at any time in the year. The accommodation was far more luxurious than I had expected, and the food was overall superb.",
+    "reviewAuthor": "Casey Van Denberg",
+    "stars": 5
   }
 ]
     

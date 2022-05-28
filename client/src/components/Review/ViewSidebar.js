@@ -1,9 +1,9 @@
 import React from "react";
-import StarRating from "../../components/Stars/Stars";
+import StarRating from "../Stars/Stars";
 
-export default function Sidebar(props) {
+export default function ViewSidebar(props) {
   function close() {
-    props.closeSidebar();
+    props.closeViewSidebar();
   }
   return (
     <div
@@ -19,7 +19,7 @@ export default function Sidebar(props) {
       }}
     >
       <input
-        className="review-title"
+        className="view-review-title"
         placeholder="Title"
         style={{
           height: "32px",
@@ -40,7 +40,7 @@ export default function Sidebar(props) {
         X
       </button>
       <textarea
-        className="review-text"
+        className="view-review-text"
         placeholder="Review"
         style={{
           marginTop: "5px",
@@ -51,27 +51,8 @@ export default function Sidebar(props) {
         }}
       ></textarea>
       <div className="rating-box" style={{ paddingLeft: "5px" }}>
-        <StarRating />
+        <StarRating className="view-review-stars" />
       </div>
-      <button
-        className="btn p-1 bg-dark text-white"
-        style={{
-          cursor: "pointer",
-          alignContent: "center",
-          width: "100%",
-          marginTop: "10px",
-          borderRadius: "0px",
-        }}
-      >
-        Submit
-      </button>
-      {/* <div>
-        <img
-          src="https://i.ibb.co/nzDNnYg/clipart.png"
-          alt=""
-          style={{ width: "90%", height: "90%", marginLeft: "10px" }}
-        ></img>
-      </div> */}
     </div>
   );
 }
