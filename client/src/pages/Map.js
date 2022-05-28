@@ -18,7 +18,7 @@ export default function MapPage() {
     longitude: 0,
     zoom: 1.8,
   });
-
+  
   const navigate = useNavigate();
   console.log(data);
 
@@ -103,10 +103,6 @@ export default function MapPage() {
         ></ViewSidebar>
       )}
 
-      {displayform && (
-        <AddSidebar closeSidebar={() => setDisplayForm(false)}></AddSidebar>
-      )}
-
       <button
         style={{
           position: "fixed",
@@ -117,7 +113,7 @@ export default function MapPage() {
         onClick={() => navigate(-2)}
       >
         &larr; Go back
-      </button>
+     </button>    
     </>
   );
 }
