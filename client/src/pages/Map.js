@@ -1,10 +1,10 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState }  from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_REVIEWS } from "../utils/queries";
 import Map, { Marker, Popup, FullscreenControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import AddSidebar from "../components/Review/AddSidebar";
-import ViewSidebar from "../components/Review/ViewSidebar";
+// import ViewSidebar from "../components/Review/ViewSidebar";
 import { useNavigate } from "react-router-dom";
 
 export default function MapPage() {
@@ -89,10 +89,10 @@ export default function MapPage() {
           >
             <div>
               <h2>
-              {reviews[0].title}
+              {reviews.review.title}
               </h2>
 		        <p>
-		        {reviews[0].content}
+		        {reviews.review.content}
 		        </p>
             </div>
             <button
@@ -103,7 +103,7 @@ export default function MapPage() {
                 marginTop: "5px",
               }}
               onClick={() => {
-                setDisplayForm(true);
+                setDisplayForm(false);
               }}
             >
               Add Review
@@ -113,15 +113,15 @@ export default function MapPage() {
         <FullscreenControl />
       </Map>
 
-      {displayform && (
+       {displayform && (
         <AddSidebar closeSidebar={() => setDisplayForm(false)}></AddSidebar>
       )}
 
-      {displayreview && (
+     {/* {displayreview && (
         <ViewSidebar
           closeViewSidebar={() => setDisplayReview(false)}
         ></ViewSidebar>
-      )} 
+      )}  */}
 
       <button
         style={{
