@@ -1,34 +1,28 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_REVIEWS } from "../utils/queries";
 import Map, { Marker, Popup, FullscreenControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import AddSidebar from "../components/Review/AddSidebar";
-// import ViewSidebar from "../components/Review/ViewSidebar";
 import { useNavigate } from "react-router-dom";
 
 export default function MapPage() {
   const { data } = useQuery(QUERY_REVIEWS);
   const reviews = data?.reviews || [];
-  const [viewState, setViewState] = React.useState({
+  const [viewState, setViewState] = useState({
     latitude: 0,
     longitude: 0,
     zoom: 1.8,
   });
 
-  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [review, setReview] = useState(null);
 
   const navigate = useNavigate();
   console.log(data);
 
-  const [popupCoordinates, setPopupCoordinates] = useState(null);
-
-  const [displayreview, setDisplayReview] = useState(false);
-
   const [displayform, setDisplayForm] = useState(false);
 
-  
- return (
+  return (
     <>
       <Map
         {...viewState}
@@ -41,62 +35,68 @@ export default function MapPage() {
           height: "100vh",
         }}
         mapStyle="mapbox://styles/mapbox/streets-v11"
-        mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN}
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         onClick={(event) => {
           console.log("MAP", event);
-          setPopupCoordinates({
-            latitude: event.lngLat.lat,
-            longitude: event.lngLat.lng,
-          });
+          setDisplayForm(true);
         }}
       >
         {reviews.map((review) => (
           <Marker
-            key={reviews._id}
+            key={review._id}
             style={{ cursor: "pointer" }}
             latitude={review.latitude}
             longitude={review.longitude}
             color="red"
           >
-            <button 
-             
-             onClick={(e) => {
-               e.preventDefault();
-               setSelectedLocation(review.data);
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setReview(review);
               }}
-             >
-               <img src="./cargo.png" alt="yellow airplane"
-               style={{
-               background: "none",
-               border: "none",
-               cursor: "pointer",
-               width: "15px",
-               height: "15px"
-              }}></img>
-
+            >
+              <img
+                src="./cargo.png"
+                alt="yellow airplane"
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  width: "15px",
+                  height: "15px",
+                }}
+              ></img>
             </button>
           </Marker>
-          
         ))}
-        
-        {popupCoordinates !== null && (
+
+        {review !== null && (
           <Popup
-            key={reviews._id}
-            latitude={popupCoordinates.latitude}
-            longitude={popupCoordinates.longitude}
+            latitude={review.latitude}
+            longitude={review.longitude}
             anchor="top"
-            onClose={() => setPopupCoordinates(null)}
+            onClose={() => setReview(null)}
             closeOnClick={false}
           >
             <div>
-              <h2>
-              {reviews[12].title}
-              </h2>
-		        <p>
-		        {reviews[12].content}
-		        </p>
+              <h6
+                style={{
+                  fontSize: "20px",
+                  fontFamily: "Montserrat",
+                }}
+              >
+                {review.title}
+              </h6>
+              <p
+                style={{
+                  fontSize: "14px",
+                  fontFamily: "Montserrat",
+                }}
+              >
+                {review.content}
+              </p>
             </div>
-            <button
+            {/* <button
               className="btn btn-sm bg-dark text-white"
               style={{
                 cursor: "pointer",
@@ -106,25 +106,61 @@ export default function MapPage() {
               onClick={() => {
                 setDisplayForm(true);
               }}
-              >
+            >
               Add Review
-            </button>
+            </button> */}
           </Popup>
         )}
+
+        {/* {popupCoordinates !== null && (
+          <Popup
+            latitude={popupCoordinates.latitude}
+            longitude={popupCoordinates.longitude}
+            anchor="top"
+            onClose={() => setPopupCoordinates(null)}
+            closeOnClick={false}
+          >
+            <div>
+              <h6
+                style={{
+                  fontSize: "20px",
+                  fontFamily: "Montserrat",
+                }}
+              >
+                {reviews[12].title}
+              </h6>
+              <p
+                style={{
+                  fontSize: "14px",
+                  fontFamily: "Montserrat",
+                }}
+              >
+                {reviews[12].content}
+              </p>
+            </div>
+            <button
+              className="btn btn-sm bg-dark text-white"
+              style={{
+                cursor: "pointer",
+                borderRadius: "4px",
+              }}
+              onClick={() => {
+                setDisplayForm(true);
+              }}
+            >
+              Add a review
+            </button>
+          </Popup>
+        )} */}
         <FullscreenControl />
       </Map>
 
       {displayform && (
-        <AddSidebar 
-        onsubmit="console.log(review submitted👍"
-        closeSidebar={() => setDisplayForm(false)}></AddSidebar>
+        <AddSidebar
+          onsubmit="console.log(review submitted👍"
+          closeSidebar={() => setDisplayForm(false)}
+        ></AddSidebar>
       )}
-
-      {/* {displayreview && (
-        <ViewSidebar
-          closeViewSidebar={() => setDisplayReview(false)}
-        ></ViewSidebar>
-      )}  */}
 
       <button
         style={{

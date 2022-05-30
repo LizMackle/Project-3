@@ -9,9 +9,6 @@ db.once("open", async () => {
     await Review.deleteMany({});
     await User.deleteMany({});
 
-    // bulk create each model
-    // const users = await User.insertMany(seedUser);
-
     const user = new User({
       username: "Brian Kernighan",
       email: "bkernighan@techfriends.dev",

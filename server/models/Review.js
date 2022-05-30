@@ -38,36 +38,6 @@ const reviewSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-
-  // reviewSection: [
-  //   {
-  //     title: {
-  //       type: String,
-  //       required: false,
-  //     },
-
-  //     content: {
-  //       type: String,
-  //       trim: true,
-  //     },
-
-  //     reviewAuthor: {
-  //       type: String,
-  //       required: true,
-  //       trim: true,
-  //     },
-
-  //     stars: {
-  //       type: Number,
-  //       default: 0,
-  //     },
-
-  //     createdAt: {
-  //       type: Date,
-  //       default: Date.now,
-  //     },
-  //   },
-  // ],
 });
 
 const Review = model("Review", reviewSchema);
