@@ -1,14 +1,11 @@
-import * as React from "react";
+import React, { useState }  from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_REVIEWS } from "../utils/queries";
 import Map, { Marker, Popup, FullscreenControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import AddSidebar from "../components/Review/AddSidebar";
-import ViewSidebar from "../components/Review/ViewSidebar";
+// import ViewSidebar from "../components/Review/ViewSidebar";
 import { useNavigate } from "react-router-dom";
-
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoibGl6bWFja2xlIiwiYSI6ImNsMzlvZmh5bTBibWEzaW82aXdheTl2MGgifQ.EcFXGRHbQRf-CKEU3YBUwA";
 
 export default function MapPage() {
   const { data } = useQuery(QUERY_REVIEWS);
@@ -19,16 +16,19 @@ export default function MapPage() {
     zoom: 1.8,
   });
 
+  const [selectedLocation, setSelectedLocation] = useState(null);
+
   const navigate = useNavigate();
   console.log(data);
 
-  const [popupCoordinates, setPopupCoordinates] = React.useState(null);
+  const [popupCoordinates, setPopupCoordinates] = useState(null);
 
-  const [displayreview, setDisplayReview] = React.useState(false);
+  const [displayreview, setDisplayReview] = useState(false);
 
-  const [displayform, setDisplayForm] = React.useState(false);
+  const [displayform, setDisplayForm] = useState(false);
 
-  return (
+  
+ return (
     <>
       <Map
         {...viewState}
@@ -41,7 +41,7 @@ export default function MapPage() {
           height: "100vh",
         }}
         mapStyle="mapbox://styles/mapbox/streets-v11"
-        mapboxAccessToken={MAPBOX_TOKEN}
+        mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN}
         onClick={(event) => {
           console.log("MAP", event);
           setPopupCoordinates({
@@ -52,33 +52,50 @@ export default function MapPage() {
       >
         {reviews.map((review) => (
           <Marker
-            longitude={review.longitude}
+            key={reviews._id}
+            style={{ cursor: "pointer" }}
             latitude={review.latitude}
+            longitude={review.longitude}
             color="red"
-          ></Marker>
+          >
+            <button 
+             
+             onClick={(e) => {
+               e.preventDefault();
+               setSelectedLocation(review.data);
+              }}
+             >
+               <img src="./cargo.png" alt="yellow airplane"
+               style={{
+               background: "none",
+               border: "none",
+               cursor: "pointer",
+               width: "15px",
+               height: "15px"
+              }}></img>
+
+            </button>
+          </Marker>
+          
         ))}
+        
         {popupCoordinates !== null && (
           <Popup
-            longitude={popupCoordinates.longitude}
+            key={reviews._id}
             latitude={popupCoordinates.latitude}
-            anchor="bottom"
+            longitude={popupCoordinates.longitude}
+            anchor="top"
             onClose={() => setPopupCoordinates(null)}
             closeOnClick={false}
           >
-            {/* <div>TITLE</div> */}
-            <button
-              className="btn btn-sm bg-dark text-white shadow-lg "
-              style={{
-                cursor: "pointer",
-                borderRadius: "4px",
-                marginRight: "5px",
-              }}
-              onClick={() => {
-                setDisplayReview(true);
-              }}
-            >
-              View Review
-            </button>
+            <div>
+              <h2>
+              {reviews[12].title}
+              </h2>
+		        <p>
+		        {reviews[12].content}
+		        </p>
+            </div>
             <button
               className="btn btn-sm bg-dark text-white"
               style={{
@@ -89,7 +106,7 @@ export default function MapPage() {
               onClick={() => {
                 setDisplayForm(true);
               }}
-            >
+              >
               Add Review
             </button>
           </Popup>
@@ -98,14 +115,16 @@ export default function MapPage() {
       </Map>
 
       {displayform && (
-        <AddSidebar closeSidebar={() => setDisplayForm(false)}></AddSidebar>
+        <AddSidebar 
+        onsubmit="console.log(review submitted👍"
+        closeSidebar={() => setDisplayForm(false)}></AddSidebar>
       )}
 
-      {displayreview && (
+      {/* {displayreview && (
         <ViewSidebar
           closeViewSidebar={() => setDisplayReview(false)}
         ></ViewSidebar>
-      )}
+      )}  */}
 
       <button
         style={{

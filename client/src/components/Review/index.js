@@ -25,7 +25,7 @@ const ReviewList = ({
       {showTitle && <h3>{title}</h3>}
       {reviews &&
         reviews.map((review) => (
-          <div key={review.reviewId} className="card mb-3">
+          <div key={review.title} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
                 <Link
@@ -34,7 +34,7 @@ const ReviewList = ({
                 >
                   {review.reviewAuthor} <br />
                   <span style={{ fontSize: "1rem" }}>
-                    Added this this review on {review.createdAt}
+                    Added this review on {review.createdAt}
                   </span>
                 </Link>
               ) : (
@@ -46,11 +46,11 @@ const ReviewList = ({
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{review.reviewContent}</p>
+              <p>{review.content}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
-              to={`/reviews/${review.reviewId}`}
+              to={`/reviews/${review.review_id}`}
             ></Link>
           </div>
         ))}
