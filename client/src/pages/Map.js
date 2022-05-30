@@ -27,7 +27,8 @@ export default function MapPage() {
 
   const [displayform, setDisplayForm] = useState(false);
 
-  return (
+  
+ return (
     <>
       <Map
         {...viewState}
@@ -89,10 +90,10 @@ export default function MapPage() {
           >
             <div>
               <h2>
-              {reviews.review.title}
+              {reviews[12].title}
               </h2>
 		        <p>
-		        {reviews.review.content}
+		        {reviews[12].content}
 		        </p>
             </div>
             <button
@@ -103,9 +104,9 @@ export default function MapPage() {
                 marginTop: "5px",
               }}
               onClick={() => {
-                setDisplayForm(false);
+                setDisplayForm(true);
               }}
-            >
+              >
               Add Review
             </button>
           </Popup>
@@ -113,11 +114,11 @@ export default function MapPage() {
         <FullscreenControl />
       </Map>
 
-       {displayform && (
+      {displayform && (
         <AddSidebar closeSidebar={() => setDisplayForm(false)}></AddSidebar>
       )}
 
-     {/* {displayreview && (
+      {/* {displayreview && (
         <ViewSidebar
           closeViewSidebar={() => setDisplayReview(false)}
         ></ViewSidebar>
@@ -137,4 +138,3 @@ export default function MapPage() {
     </>
   );
 }
-
