@@ -115,7 +115,9 @@ export default function MapPage() {
       </Map>
 
       {displayform && (
-        <AddSidebar closeSidebar={() => setDisplayForm(false)}></AddSidebar>
+        <AddSidebar 
+        onsubmit="console.log(review submitted👍"
+        closeSidebar={() => setDisplayForm(false)}></AddSidebar>
       )}
 
       {/* {displayreview && (
