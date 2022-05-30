@@ -45,12 +45,3 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
-
-// type reviewSection {
-//   _id: ID!
-//   title: String
-//   content: String
-//   reviewAuthor: String
-//   stars: Int
-//   createdAt: String
-// }

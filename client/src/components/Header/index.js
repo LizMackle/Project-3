@@ -1,8 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import Typewriter from "typewriter-effect";
 import Auth from "../../utils/auth";
-// import "./header.css";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -25,16 +23,6 @@ const Header = () => {
         >
           WanderView
         </h1>
-        {/* <h1>
-          <Typewriter
-            options={{
-              strings: ["Welcome to my Portfolio!"],
-              autoStart: true,
-              loop: true,
-            }}
-          />
-        </h1> */}
-        {/* </Link> */}
         <p
           className="m-0"
           id="sub-title"
