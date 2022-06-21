@@ -5,6 +5,7 @@ import Map, { Marker, Popup, FullscreenControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import AddSidebar from "../components/Review/AddSidebar";
 import { useNavigate } from "react-router-dom";
+// import StarRating, { ratingValue } from "../components/Stars/Stars";
 
 export default function MapPage() {
   const { data } = useQuery(QUERY_REVIEWS);
@@ -21,6 +22,8 @@ export default function MapPage() {
   console.log(data);
 
   const [displayform, setDisplayForm] = useState(false);
+
+  
 
   return (
     <>
@@ -57,13 +60,13 @@ export default function MapPage() {
             >
               <img
                 src="./cargo.png"
-                alt="yellow airplane"
+                alt="red pointer"
                 style={{
                   background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  width: "15px",
-                  height: "15px",
+                  border: "transparent",
+                  cursor: "hand",
+                  width: "25px",
+                  height: "25px",
                 }}
               ></img>
             </button>
@@ -79,6 +82,11 @@ export default function MapPage() {
             closeOnClick={false}
           >
             <div>
+              <h5>{review.latitude}</h5>
+              <h5>{review.longitude}</h5>
+              
+            </div>
+            <div>
               <h6
                 style={{
                   fontSize: "20px",
@@ -93,65 +101,18 @@ export default function MapPage() {
                   fontFamily: "Montserrat",
                 }}
               >
-                {review.content}
+                {review.content}           
+              </p>
+              {/* <p>
+                {review.reviewAuthorId}
+              </p>               */}
+              <p>
+              <h5>{review.stars}</h5>
               </p>
             </div>
-            {/* <button
-              className="btn btn-sm bg-dark text-white"
-              style={{
-                cursor: "pointer",
-                borderRadius: "4px",
-                marginTop: "5px",
-              }}
-              onClick={() => {
-                setDisplayForm(true);
-              }}
-            >
-              Add Review
-            </button> */}
           </Popup>
         )}
 
-        {/* {popupCoordinates !== null && (
-          <Popup
-            latitude={popupCoordinates.latitude}
-            longitude={popupCoordinates.longitude}
-            anchor="top"
-            onClose={() => setPopupCoordinates(null)}
-            closeOnClick={false}
-          >
-            <div>
-              <h6
-                style={{
-                  fontSize: "20px",
-                  fontFamily: "Montserrat",
-                }}
-              >
-                {reviews[12].title}
-              </h6>
-              <p
-                style={{
-                  fontSize: "14px",
-                  fontFamily: "Montserrat",
-                }}
-              >
-                {reviews[12].content}
-              </p>
-            </div>
-            <button
-              className="btn btn-sm bg-dark text-white"
-              style={{
-                cursor: "pointer",
-                borderRadius: "4px",
-              }}
-              onClick={() => {
-                setDisplayForm(true);
-              }}
-            >
-              Add a review
-            </button>
-          </Popup>
-        )} */}
         <FullscreenControl />
       </Map>
 

@@ -1,14 +1,16 @@
 import { useMutation } from "@apollo/client";
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { ADD_REVIEW } from "../../utils/mutations";
 import { QUERY_ME, QUERY_REVIEWS } from "../../utils/queries";
 import StarRating, { ratingValue } from "../Stars/Stars";
 
-export default function AddSidebar(props) {
+export default 
+
+function AddSidebar(props) {
   const close = () => {
     props.closeSidebar();
   };
-  const [addReviews, { error }] = useMutation(ADD_REVIEW, {
+  const [addReview, { error }] = useMutation(ADD_REVIEW, {
     update(cache, { data: { addReview } }) {
       try {
         const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
@@ -22,10 +24,15 @@ export default function AddSidebar(props) {
       }
     },
   });
+
   const [saveReview, SetSaveReview] = useState(true);
 
+  const [title, setTitle] = useState('');
+  
+  const [content, setContent] = useState('');
+
   // useEffect(() => {
-  //     const data = window.localStorage.getItem('Wander_Views_App');
+  //     const data = window.localStorage.getItem('reviews');
   //     if (data !== null) SetSaveReview(JSON.parse(data))
   // })
 
@@ -35,7 +42,8 @@ export default function AddSidebar(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.reviews);
+    const review = { title, content }
+    console.log(review);
   }
 
   return (
@@ -56,6 +64,8 @@ export default function AddSidebar(props) {
           <input
             className="add-review-title"
             placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             style={{
               height: "32px",
               width: "90%",
@@ -76,8 +86,11 @@ export default function AddSidebar(props) {
             X
           </button>
           <textarea
+            required
             className="add-review-text"
             placeholder="Review"
+            value={content}
+            onChange={(e) => setTitle(e.target.value)}
             style={{
               marginTop: "5px",
               marginBottom: "10px",
@@ -91,7 +104,7 @@ export default function AddSidebar(props) {
           </div>
 
           {saveReview && (
-            <button
+            <><button
               type="submit"
               className="btn p-1 bg-dark text-white"
               style={{
@@ -103,8 +116,10 @@ export default function AddSidebar(props) {
               }}
               onClick={() => SetSaveReview()}
             >
-              Submit
+              Add Review
             </button>
+            <p> {title} </p>
+            <p> {content} </p></>
           )}
         </div>
       </form>
