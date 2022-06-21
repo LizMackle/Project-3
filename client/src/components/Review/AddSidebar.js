@@ -1,36 +1,59 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import React, { useRef, useState, useEffect } from "react";
 import { ADD_REVIEW } from "../../utils/mutations";
 import { QUERY_ME, QUERY_REVIEWS } from "../../utils/queries";
-import StarRating, { ratingValue } from "../Stars/Stars";
+import ReactStars from "react-stars";
+import { CloseButton } from "react-bootstrap";
+
 
 export default 
 
-function AddSidebar(props) {
+function AddReview(props) {
   const close = () => {
     props.closeSidebar();
   };
-  const [addReview, { error }] = useMutation(ADD_REVIEW, {
-    update(cache, { data: { addReview } }) {
-      try {
-        const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
+  
+  const { data } = useQuery(QUERY_REVIEWS);
+  
+  const reviews = data?.reviews || [];
+  
+   
+  
+  // latitude 
+  const [latitude, setLatitude] = useState('');
+  
+  // longitude 
+  const [longitude, setLongitude] = useState('');
 
-        cache.writeQuery({
-          query: QUERY_REVIEWS,
-          data: { reviews: [addReview, ...reviews] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    },
-  });
-
-  const [saveReview, SetSaveReview] = useState(true);
-
+  // Setting the review-tittle
   const [title, setTitle] = useState('');
   
+  // Setting review-content  
   const [content, setContent] = useState('');
-
+  
+  // Stars
+  const [stars, setStars] = useState('');
+  
+  const ratingChanged = (newRating) => {
+    console.log(newRating)
+  }
+  
+  
+  const [saveReview] = useMutation(ADD_REVIEW, {
+    variables: { latitude, longitude, title, content, stars },
+    update(cache, { data: { saveReview } }) {
+      
+      const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
+      
+      cache.writeQuery({
+        query: QUERY_REVIEWS,
+        data: { reviews: [saveReview, ...reviews] },
+      });
+      
+    },
+  });
+  
+  
   // useEffect(() => {
   //     const data = window.localStorage.getItem('reviews');
   //     if (data !== null) SetSaveReview(JSON.parse(data))
@@ -40,13 +63,25 @@ function AddSidebar(props) {
     window.localStorage.setItem("Wander_Views_App", JSON.stringify(saveReview));
   }, [saveReview]);
 
-  function handleSubmit(e) {
+  
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const review = { title, content }
-    console.log(review);
+
+    console.log(title, content);
+    
+    AddReview(latitude, longitude, title, content, stars);
+
+    setLatitude('');
+    setLongitude('');
+    setTitle('');
+    setContent('');
+    setStars('');
   }
 
+
   return (
+    <>
     <div>
       <form onSubmit={handleSubmit}>
         <div
@@ -61,36 +96,43 @@ function AddSidebar(props) {
             zIndex: 10,
           }}
         >
+          <label>
+            {reviews.longitude}
+            {reviews.latitude}
+          </label>
           <input
             className="add-review-title"
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            required
             style={{
               height: "32px",
               width: "90%",
               padding: "5px",
             }}
           ></input>
-          <button
-            type="submit"
-            className="btn p-1 bg-dark text-white"
-            onClick={close}
-            style={{
+                    
+            <CloseButton 
+              type="submit"
+              className="btn p-1 bg-dark text-white"
+              onClick={close}
+              style={{
               cursor: "pointer",
               position: "absolute",
               right: "2px",
               borderRadius: "4px",
-            }}
-          >
-            X
-          </button>
+              }}
+            >
+              X
+            </CloseButton>
+
           <textarea
-            required
-            className="add-review-text"
+            className="add-review-content"
             placeholder="Review"
             value={content}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
+            required
             style={{
               marginTop: "5px",
               marginBottom: "10px",
@@ -99,14 +141,19 @@ function AddSidebar(props) {
               padding: "5px",
             }}
           ></textarea>
-          <div className="rating-box" style={{ paddingLeft: "5px" }}>
-            <StarRating className="add-review-stars" />
-          </div>
-
-          {saveReview && (
+                      
+            <ReactStars 
+            count={5}
+            onChange={ratingChanged}
+            size={24}
+            style={{ 
+              paddingLeft: "10px" 
+            }}
+            color2={'#ffd700'} />
+                      
             <><button
-              type="submit"
               className="btn p-1 bg-dark text-white"
+              // onClick={() => SetSaveReview()}
               style={{
                 cursor: "pointer",
                 alignContent: "center",
@@ -114,15 +161,15 @@ function AddSidebar(props) {
                 marginTop: "10px",
                 borderRadius: "0px",
               }}
-              onClick={() => SetSaveReview()}
             >
               Add Review
             </button>
-            <p> {title} </p>
-            <p> {content} </p></>
-          )}
+            
+            </>
+          
         </div>
       </form>
     </div>
+  </>
   );
 }

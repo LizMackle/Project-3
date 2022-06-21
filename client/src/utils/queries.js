@@ -25,20 +25,6 @@ export const QUERY_REVIEWS = gql`
   }
 `;
 
-// export const QUERY_SINGLE_REVIEW = gql`
-//   query getSingleReview($reviewId: ID!) {
-//     review(reviewId: $reviewId) {
-//       _id
-//       latitude
-//       longitude
-//       title
-//       content
-//       reviewAuthorId
-//       stars
-//       createdAt
-//     }
-//   }
-// `;
 
 export const QUERY_ME = gql`
   query me {

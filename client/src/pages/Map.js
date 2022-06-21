@@ -3,9 +3,9 @@ import { useQuery } from "@apollo/client";
 import { QUERY_REVIEWS } from "../utils/queries";
 import Map, { Marker, Popup, FullscreenControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import AddSidebar from "../components/Review/AddSidebar";
+import AddReview from "../components/Review/AddSidebar";
 import { useNavigate } from "react-router-dom";
-// import StarRating, { ratingValue } from "../components/Stars/Stars";
+import ReactStars from "react-stars";
 
 export default function MapPage() {
   const { data } = useQuery(QUERY_REVIEWS);
@@ -22,9 +22,7 @@ export default function MapPage() {
   console.log(data);
 
   const [displayform, setDisplayForm] = useState(false);
-
   
-
   return (
     <>
       <Map
@@ -106,9 +104,15 @@ export default function MapPage() {
               {/* <p>
                 {review.reviewAuthorId}
               </p>               */}
-              <p>
-              <h5>{review.stars}</h5>
-              </p>
+              
+              <ReactStars 
+              value={review.stars}
+              size={24}
+              style={{ 
+              paddingLeft: "10px" 
+              }}
+              color2={'#ffd700'} />
+              
             </div>
           </Popup>
         )}
@@ -117,10 +121,10 @@ export default function MapPage() {
       </Map>
 
       {displayform && (
-        <AddSidebar
-          onsubmit="console.log(review submitted👍"
+        <AddReview
+          onSubmit="console.log(review submitted👍"
           closeSidebar={() => setDisplayForm(false)}
-        ></AddSidebar>
+        ></AddReview>
       )}
 
       <button
