@@ -122,8 +122,9 @@ export default function MapPage() {
 
       {displayform && (
         <AddReview
-          onSubmit="console.log(review submitted👍"
-          closeSidebar={() => setDisplayForm(false)}
+        closeSidebar={() => setDisplayForm(false)} 
+        // closes the sidebar when click on x
+        // onSubmit="console.log(review submitted👍"
         ></AddReview>
       )}
 
