@@ -22,7 +22,7 @@ export default function MapPage() {
   console.log(data);
 
   const [displayform, setDisplayForm] = useState(false);
-  
+
   return (
     <>
       <Map
@@ -51,8 +51,8 @@ export default function MapPage() {
           >
             <img
               onClick={(e) => {
-              e.stopPropagation();
-              setReview(review);
+                e.stopPropagation();
+                setReview(review);
               }}
               src="./pin5.png"
               alt="red pointer"
@@ -62,12 +62,10 @@ export default function MapPage() {
                 cursor: "hand",
                 width: "27px",
                 height: "37px",
-                }}
-              ></img>
+              }}
+            ></img>
           </Marker>
         ))}
-            
-            
 
         {review !== null && (
           <Popup
@@ -90,11 +88,12 @@ export default function MapPage() {
                   {review.title}
                 </h6>
               </div>
+              <hr></hr>
 
               <div className="lon-lat">
                 <h6
                   style={{
-                    fontSize: "14px",
+                    fontSize: "13px",
                     fontFamily: "Montserrat",
                   }}
                 >
@@ -110,22 +109,16 @@ export default function MapPage() {
                 }}
               >
                 {review.content}
-                
-                {/* <p>
-                {review.reviewAuthorId}
-              </p>               */}
-              
+
               </div>
-              
-              <div className="starRating" style={{ paddingTop: "10px" }}>
-              <ReactStars 
-              value={review.stars}
-              size={24}
-              style={{ 
-              paddingLeft: "10px" 
-              }}
-              color2={'#ffd700'} />
+
+              <div
+                className="starRating"
+                style={{ paddingTop: "10px", paddingLeft: "60px" }}
+              >
+                <ReactStars value={review.stars} size={24} color2={"#ffd700"} />
               </div>
+              <hr></hr>
             </div>
           </Popup>
         )}
@@ -135,6 +128,7 @@ export default function MapPage() {
 
       {displayform && (
         <AddReview
+
         closeSidebar={() => setDisplayForm(false)} 
         // closes the sidebar when click on x
         onSubmit="review submitted👍"
