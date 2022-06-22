@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { ADD_REVIEW } from "../../utils/mutations";
 import { QUERY_REVIEWS } from "../../utils/queries";
 import ReactStars from "react-stars";
-import { CloseButton } from "react-bootstrap";
+import { CloseButton, Button } from "react-bootstrap";
 
 
 export default function AddReview(props) {
@@ -31,27 +31,12 @@ export default function AddReview(props) {
   
   // Stars
   const [stars, setStars] = useState('');
+
   
   //displaying Stars in the form
   const ratingChanged = (newRating) => {
     console.log(newRating)
   }
-  
-  
-  const [saveReview] = useMutation(ADD_REVIEW, {
-    variables: { latitude, longitude, title, content, stars },
-    update(cache, { data: { saveReview } }) {
-      
-      const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
-      
-      cache.writeQuery({
-        query: QUERY_REVIEWS,
-        data: { reviews: [saveReview, ...reviews] },
-      });
-      
-    },
-  });
-  
   
   // useEffect(() => {
   //     const data = window.localStorage.getItem('reviews');
@@ -61,6 +46,24 @@ export default function AddReview(props) {
   // useEffect(() => {
   //   window.localStorage.setItem("Wander_Views_App", JSON.stringify(saveReview));
   // }, [saveReview]);
+  
+  
+  const [saveReview] = useMutation(ADD_REVIEW, {
+    
+    update(cache, { data: { saveReview } }) {
+      
+      const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
+      
+      cache.writeQuery({
+        query: QUERY_REVIEWS,
+        data: { reviews: [saveReview, ...reviews] },
+      });
+      return console.log(data);
+      
+    },
+  });
+  
+  
 
   
 
@@ -68,21 +71,11 @@ export default function AddReview(props) {
     e.preventDefault();
 
     alert(`Your review has been added!`)
-
-    console.log(title, content);
     
-    const Review = {
-      latitude: this.target.latitude.value, 
-      longitude: this.target.longitude.value, 
-      title: this.target.title.value, 
-      content: this.target.content.value, 
-      stars: this.props.stars.value,
+    
     }
 
-    this.props.saveReview(Review) // to save the review
-    
-    
-  }
+  
 
 
   return (
@@ -149,16 +142,17 @@ export default function AddReview(props) {
                       
             <ReactStars 
             count={5}
-            onChange={ratingChanged}
+            onChange={ratingChanged} 
             size={24}
             style={{ 
               paddingLeft: "10px" 
             }}
-            color2={'#ffd700'} />
+            color2={'#ffd700'} />,
+            
                       
-            <><button
+            <><Button
               className="btn p-1 bg-dark text-white"
-              //onClick={() => SetSaveReview()}
+              onClick={handleSubmit && close}
               style={{
                 cursor: "pointer",
                 alignContent: "center",
@@ -168,7 +162,7 @@ export default function AddReview(props) {
               }}
             >
               Add Review
-            </button>
+            </Button>
             
             </>
           

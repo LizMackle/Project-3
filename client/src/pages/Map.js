@@ -75,6 +75,7 @@ export default function MapPage() {
             onClose={() => setReview(null)}
             closeOnClick={false}
           >
+            
             <div className="reviewContainer text-center">
               <div className="reviewTitle">
                 <h6
@@ -108,6 +109,7 @@ export default function MapPage() {
                 }}
               >
                 {review.content}
+
               </div>
 
               <div
@@ -126,9 +128,10 @@ export default function MapPage() {
 
       {displayform && (
         <AddReview
-          closeSidebar={() => setDisplayForm(false)}
-          // closes the sidebar when click on x
-          // onSubmit="console.log(review submitted👍"
+
+        closeSidebar={() => setDisplayForm(false)} 
+        // closes the sidebar when click on x
+        onSubmit="review submitted👍"
         ></AddReview>
       )}
 
