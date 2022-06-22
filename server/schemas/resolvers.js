@@ -13,7 +13,7 @@ const resolvers = {
     },
 
     reviews: async (parent, args, context) => {
-      // if (context.user)
+      
       {
         return await Review.find({}).sort({ createdAt: -1 });
       }
@@ -31,8 +31,7 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
-      // const users = await User.find({});
-      // console.log({users});
+      
       console.log({ username });
       try {
         const user = await User.create({ username, email, password });
