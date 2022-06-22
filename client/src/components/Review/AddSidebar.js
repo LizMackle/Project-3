@@ -1,14 +1,13 @@
 import { useMutation, useQuery } from "@apollo/client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ADD_REVIEW } from "../../utils/mutations";
-import { QUERY_ME, QUERY_REVIEWS } from "../../utils/queries";
+import { QUERY_REVIEWS } from "../../utils/queries";
 import ReactStars from "react-stars";
 import { CloseButton } from "react-bootstrap";
 
 
-export default 
-
-function AddReview(props) {
+export default function AddReview(props) {
+  
   const close = () => {
     props.closeSidebar();
   };
@@ -17,8 +16,7 @@ function AddReview(props) {
   
   const reviews = data?.reviews || [];
   
-   
-  
+     
   // latitude 
   const [latitude, setLatitude] = useState('');
   
@@ -34,6 +32,7 @@ function AddReview(props) {
   // Stars
   const [stars, setStars] = useState('');
   
+  //displaying Stars in the form
   const ratingChanged = (newRating) => {
     console.log(newRating)
   }
@@ -59,24 +58,30 @@ function AddReview(props) {
   //     if (data !== null) SetSaveReview(JSON.parse(data))
   // })
 
-  useEffect(() => {
-    window.localStorage.setItem("Wander_Views_App", JSON.stringify(saveReview));
-  }, [saveReview]);
+  // useEffect(() => {
+  //   window.localStorage.setItem("Wander_Views_App", JSON.stringify(saveReview));
+  // }, [saveReview]);
 
   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    alert(`Your review has been added!`)
+
     console.log(title, content);
     
-    AddReview(latitude, longitude, title, content, stars);
+    const Review = {
+      latitude: this.target.latitude.value, 
+      longitude: this.target.longitude.value, 
+      title: this.target.title.value, 
+      content: this.target.content.value, 
+      stars: this.props.stars.value,
+    }
 
-    setLatitude('');
-    setLongitude('');
-    setTitle('');
-    setContent('');
-    setStars('');
+    this.props.saveReview(Review) // to save the review
+    
+    
   }
 
 
@@ -153,7 +158,7 @@ function AddReview(props) {
                       
             <><button
               className="btn p-1 bg-dark text-white"
-              // onClick={() => SetSaveReview()}
+              //onClick={() => SetSaveReview()}
               style={{
                 cursor: "pointer",
                 alignContent: "center",

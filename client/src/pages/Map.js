@@ -48,28 +48,26 @@ export default function MapPage() {
             style={{ cursor: "pointer" }}
             latitude={review.latitude}
             longitude={review.longitude}
-            color="red"
           >
-            <button
+            <img
               onClick={(e) => {
-                e.stopPropagation();
-                setReview(review);
+              e.stopPropagation();
+              setReview(review);
               }}
-            >
-              <img
-                src="./cargo.png"
-                alt="red pointer"
-                style={{
-                  background: "none",
-                  border: "transparent",
-                  cursor: "hand",
-                  width: "25px",
-                  height: "25px",
+              src="./pin5.png"
+              alt="red pointer"
+              style={{
+                background: "none",
+                border: "transparent",
+                cursor: "hand",
+                width: "27px",
+                height: "37px",
                 }}
               ></img>
-            </button>
           </Marker>
         ))}
+            
+            
 
         {review !== null && (
           <Popup
@@ -79,32 +77,45 @@ export default function MapPage() {
             onClose={() => setReview(null)}
             closeOnClick={false}
           >
-            <div>
-              <h5>{review.latitude}</h5>
-              <h5>{review.longitude}</h5>
-              
-            </div>
-            <div>
-              <h6
-                style={{
-                  fontSize: "20px",
-                  fontFamily: "Montserrat",
-                }}
-              >
-                {review.title}
-              </h6>
-              <p
+            
+            <div className="reviewContainer text-center">
+              <div className="reviewTitle">
+                <h6
+                  style={{
+                    fontSize: "22px",
+                    fontFamily: "Montserrat",
+                    paddingTop: "10px",
+                  }}
+                >
+                  {review.title}
+                </h6>
+              </div>
+
+              <div className="lon-lat">
+                <h6
+                  style={{
+                    fontSize: "14px",
+                    fontFamily: "Montserrat",
+                  }}
+                >
+                  {review.latitude} | {review.longitude}
+                </h6>
+              </div>
+
+              <div
+                className="reviewContent"
                 style={{
                   fontSize: "14px",
                   fontFamily: "Montserrat",
                 }}
               >
-                {review.content}           
-              </p>
-              {/* <p>
+                {review.content}
+                {/* <p>
                 {review.reviewAuthorId}
               </p>               */}
+              </div>
               
+              <div className="starRating" style={{ paddingTop: "10px" }}>
               <ReactStars 
               value={review.stars}
               size={24}
@@ -112,7 +123,7 @@ export default function MapPage() {
               paddingLeft: "10px" 
               }}
               color2={'#ffd700'} />
-              
+              </div>
             </div>
           </Popup>
         )}
