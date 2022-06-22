@@ -7,6 +7,9 @@ import AddSidebar from "../components/Review/AddSidebar";
 import { useNavigate } from "react-router-dom";
 // import StarRating, { ratingValue } from "../components/Stars/Stars";
 
+const MAPBOX_TOKEN =
+  "pk.eyJ1IjoibGl6bWFja2xlIiwiYSI6ImNsMzlvZmh5bTBibWEzaW82aXdheTl2MGgifQ.EcFXGRHbQRf-CKEU3YBUwA";
+
 export default function MapPage() {
   const { data } = useQuery(QUERY_REVIEWS);
   const reviews = data?.reviews || [];
@@ -23,8 +26,6 @@ export default function MapPage() {
 
   const [displayform, setDisplayForm] = useState(false);
 
-  
-
   return (
     <>
       <Map
@@ -38,7 +39,8 @@ export default function MapPage() {
           height: "100vh",
         }}
         mapStyle="mapbox://styles/mapbox/streets-v11"
-        mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+        mapboxAccessToken={MAPBOX_TOKEN}
+        // mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         onClick={(event) => {
           console.log("MAP", event);
           setDisplayForm(true);
@@ -84,7 +86,6 @@ export default function MapPage() {
             <div>
               <h5>{review.latitude}</h5>
               <h5>{review.longitude}</h5>
-              
             </div>
             <div>
               <h6
@@ -101,13 +102,13 @@ export default function MapPage() {
                   fontFamily: "Montserrat",
                 }}
               >
-                {review.content}           
+                {review.content}
               </p>
               {/* <p>
                 {review.reviewAuthorId}
               </p>               */}
               <p>
-              <h5>{review.stars}</h5>
+                <h5>{review.stars}</h5>
               </p>
             </div>
           </Popup>
