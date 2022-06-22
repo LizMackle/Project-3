@@ -7,9 +7,6 @@ import AddReview from "../components/Review/AddSidebar";
 import { useNavigate } from "react-router-dom";
 import ReactStars from "react-stars";
 
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoibGl6bWFja2xlIiwiYSI6ImNsMzlvZmh5bTBibWEzaW82aXdheTl2MGgifQ.EcFXGRHbQRf-CKEU3YBUwA";
-
 export default function MapPage() {
   const { data } = useQuery(QUERY_REVIEWS);
   const reviews = data?.reviews || [];
@@ -25,6 +22,7 @@ export default function MapPage() {
   console.log(data);
 
   const [displayform, setDisplayForm] = useState(false);
+
   return (
     <>
       <Map
@@ -38,8 +36,7 @@ export default function MapPage() {
           height: "100vh",
         }}
         mapStyle="mapbox://styles/mapbox/streets-v11"
-        mapboxAccessToken={MAPBOX_TOKEN}
-        // mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         onClick={(event) => {
           console.log("MAP", event);
           setDisplayForm(true);
@@ -54,8 +51,8 @@ export default function MapPage() {
           >
             <img
               onClick={(e) => {
-              e.stopPropagation();
-              setReview(review);
+                e.stopPropagation();
+                setReview(review);
               }}
               src="./pin5.png"
               alt="red pointer"
@@ -65,12 +62,10 @@ export default function MapPage() {
                 cursor: "hand",
                 width: "27px",
                 height: "37px",
-                }}
-              ></img>
+              }}
+            ></img>
           </Marker>
         ))}
-            
-            
 
         {review !== null && (
           <Popup
@@ -92,11 +87,12 @@ export default function MapPage() {
                   {review.title}
                 </h6>
               </div>
+              <hr></hr>
 
               <div className="lon-lat">
                 <h6
                   style={{
-                    fontSize: "14px",
+                    fontSize: "13px",
                     fontFamily: "Montserrat",
                   }}
                 >
@@ -112,21 +108,15 @@ export default function MapPage() {
                 }}
               >
                 {review.content}
+              </div>
 
-                {/* <p>
-                {review.reviewAuthorId}
-              </p>               */}
+              <div
+                className="starRating"
+                style={{ paddingTop: "10px", paddingLeft: "60px" }}
+              >
+                <ReactStars value={review.stars} size={24} color2={"#ffd700"} />
               </div>
-              
-              <div className="starRating" style={{ paddingTop: "10px" }}>
-              <ReactStars 
-              value={review.stars}
-              size={24}
-              style={{ 
-              paddingLeft: "10px" 
-              }}
-              color2={'#ffd700'} />
-              </div>
+              <hr></hr>
             </div>
           </Popup>
         )}
@@ -136,9 +126,9 @@ export default function MapPage() {
 
       {displayform && (
         <AddReview
-        closeSidebar={() => setDisplayForm(false)} 
-        // closes the sidebar when click on x
-        // onSubmit="console.log(review submitted👍"
+          closeSidebar={() => setDisplayForm(false)}
+          // closes the sidebar when click on x
+          // onSubmit="console.log(review submitted👍"
         ></AddReview>
       )}
 
