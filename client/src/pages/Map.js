@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_REVIEWS } from "../utils/queries";
 import Map, { Marker, Popup, FullscreenControl } from "react-map-gl";
+
 import "mapbox-gl/dist/mapbox-gl.css";
 import AddReview from "../components/Review/AddSidebar";
 import { useNavigate } from "react-router-dom";
@@ -75,7 +76,6 @@ export default function MapPage() {
             onClose={() => setReview(null)}
             closeOnClick={false}
           >
-            
             <div className="reviewContainer text-center">
               <div className="reviewTitle">
                 <h6
@@ -109,7 +109,6 @@ export default function MapPage() {
                 }}
               >
                 {review.content}
-
               </div>
 
               <div
@@ -128,10 +127,9 @@ export default function MapPage() {
 
       {displayform && (
         <AddReview
-
-        closeSidebar={() => setDisplayForm(false)} 
-        // closes the sidebar when click on x
-        onSubmit="review submitted👍"
+          closeSidebar={() => setDisplayForm(false)}
+          // closes the sidebar when click on x
+          onSubmit="review submitted👍"
         ></AddReview>
       )}
 
