@@ -40,7 +40,7 @@ Seed the app<br>
 Start the server<br>
 `npm run develop`
   
-### [Deployed App](https://wanderview.herokuapp.com/)
+### Deployed App - TBA
 
 ![screenshot1](assets/HomepageImg.png)
 ![screenshot2](assets/LoginImg.png)
