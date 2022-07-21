@@ -71,7 +71,7 @@ const About = () => {
               <div className="name">Mayra Rivas Lara</div>
               <div className="about">FOUNDER</div>
               <div className="social-links">
-                <a href="https://github.com/MayraRivasLara">
+                <a href="https://mayrarivaslara.github.io/MR-Portfolio2.0-React/#/">
                   <MdPersonOutline
                     id="portfolioicon"
                     size="1.5rem"

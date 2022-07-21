@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_REVIEWS } from "../utils/queries";
 import Map, { Marker, Popup, FullscreenControl } from "react-map-gl";
-
 import "mapbox-gl/dist/mapbox-gl.css";
 import AddReview from "../components/Review/AddSidebar";
 import { useNavigate } from "react-router-dom";
